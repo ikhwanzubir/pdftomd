@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(pdftk:*)",
+      "Bash(qpdf:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(apt list:*)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(rm:*)",
+      "Bash(pdftotext:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
