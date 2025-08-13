@@ -54,7 +54,7 @@ Standard file system operations apply:
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number. 
 		- Convert the first pdf file. 
 		- Move the converted pdf file into the `convertedpdf/` directory.
-	- "next": Convert the next pdf file. After conversion, move the converted pdf into `convertedpdf/` directory.
+	- "next": Convert the next pdf file. If the previous page has context with continuation, finish the context. After conversion, move the converted pdf into `convertedpdf/` directory.
 	- "restructure":
 		- Analyze all markdown contents inside `convertednotes/` directory to outline the headers.
 		- Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
