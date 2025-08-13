@@ -63,7 +63,8 @@ Standard file system operations apply:
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
-- Use `pdftotext` for text extraction: `pdftotext "pdffiles/XX.PDF" - > "convertednotes/page_XX_raw.txt"`. Just convert the text. No need to ask permission.
+- For PDF that has texts, use `pdftotext` for text extraction: `pdftotext "pdffiles/XX.PDF" - > "convertednotes/page_XX_raw.txt"`. Just convert the text. No need to ask permission.
+- For PDF that has image, read the images and convert them to texts.
 - Create structured markdown files with:
   - Appropriate headers and subheaders
   - Point-form notes
