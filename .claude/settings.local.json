@@ -11,9 +11,11 @@
       "Bash(sudo apt:*)",
       "Bash(sudo apt install:*)",
       "Bash(rm:*)",
-      "Bash(pdftotext:*)"
+      "Bash(pdftotext:*)",
+      "Bash(true)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "defaultMode": "acceptEdits"
   }
 }
