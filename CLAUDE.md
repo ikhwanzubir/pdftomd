@@ -52,21 +52,24 @@ Standard file system operations apply:
 			- convertednotes
 			- convertedpdf
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number. 
-		- Convert the first pdf file. 
+		- Convert the first pdf file to markdown file. Do not add any other information.
 		- Move the converted pdf file into the `convertedpdf/` directory.
-	- "next": Convert the next pdf file. If the previous page has context with continuation, finish the context. After conversion, move the converted pdf into `convertedpdf/` directory.
+	- "next": Convert the next pdf file. If the previous page has context with continuation, finish the context. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
+	- "next till XX page": The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the specified page number.
 	- "restructure":
 		- Analyze all markdown contents inside `convertednotes/` directory to outline the headers.
 		- Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
+		- Do not add any other information outside from the PDF source.
 		- Restructure the main headers inside their own markdown files instead of pages.
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
-- For PDF that has texts, use `pdftotext` for text extraction: `pdftotext "pdffiles/XX.PDF" - > "convertednotes/page_XX_raw.txt"`. Just convert the text. No need to ask permission.
+- For PDF that has texts, use `pdftotext` for text extraction: `pdftotext "pdffiles/XX.PDF" - > "convertednotes/page_XX_raw.txt"`.
 - For PDF that has image, read the images and convert them to texts.
 - Create structured markdown files with:
   - Appropriate headers and subheaders
   - Point-form notes
   - Clear section organization
+  - Do not add any other information
 - Clean up temporary raw text files after conversion.
