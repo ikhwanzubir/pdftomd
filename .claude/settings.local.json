@@ -12,6 +12,8 @@
       "Bash(sudo apt install:*)",
       "Bash(rm:*)",
       "Bash(pdftotext:*)",
+      "Bash(sleep:*)",
+      "Bash(cat:*)",
       "Bash(true)"
     ],
     "deny": [],
