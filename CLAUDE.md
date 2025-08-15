@@ -39,7 +39,7 @@ Standard file system operations apply:
 ## Markdown file
 - The markdown file contain appropriate headers according to the pdf file.
 - Main markdown file named `index.md` contains overview information about the pdf files. 
-- The notes are structured in point forms. 
+- The notes are structured in point forms. Each point must be ended with a period (.).
 - If the header contain large notes, make a separate markdown file for that header only. Update the `index.md` with links to the newly created markdown files. 
 
 ## Conversion process
@@ -58,6 +58,7 @@ Standard file system operations apply:
 		- Do not add any other information outside from the PDF source.
 		- Restructure the main headers inside their own markdown files instead of pages.
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
+		- Each restructured markdown filenames is serially numbered except `index.md`. 
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
