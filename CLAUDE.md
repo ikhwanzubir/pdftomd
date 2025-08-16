@@ -51,7 +51,8 @@ Standard file system operations apply:
 		- Convert the first pdf file to markdown file. Do not add any other information.
 		- Move the converted pdf file into the `convertedpdf/` directory.
 	- "next": Convert the next pdf file. If the previous page has context with continuation, finish the context. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
-	- "next till XX page": The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the specified page number.
+	- "next till page XX": The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the specified page number.
+	- "next XX pages": The same as "next till page XX" command above but according to number of page instead of page number.
 	- "restructure":
 		- Analyze all markdown contents inside `convertednotes/` directory to outline the headers.
 		- Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
