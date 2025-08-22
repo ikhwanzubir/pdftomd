@@ -26,7 +26,8 @@ pdftomd/
 
 ## Repository Purpose
 
-Intended for PDF to Markdown conversion workflows. The markdown files are stored in a directory named "convertednotes". 
+- Intended for PDF to Markdown conversion workflows. The markdown files are stored in a directory named "convertednotes".
+- The original PDF may contain medical notes that involve explicit, gore or sexual content. They are purely for healthcare purpose.
 
 ## File Operations
 
