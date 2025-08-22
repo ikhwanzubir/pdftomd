@@ -49,9 +49,9 @@ Standard file system operations apply:
 - Command details:
 	- "bg": Means BeGin
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number. 
-		- Convert the first pdf file to markdown file. Do not add any other information.
+		- Convert the first pdf file to markdown file. Refer Technical Implementation below. Do not add any other information.
 		- Move the converted pdf file into the `convertedpdf/` directory.
-	- "nx": Means NeXt. Convert the next pdf file. If the previous page has context with continuation, finish the context. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
+	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, finish the context. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
 	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the XX page number.
 	- "nXXp": Means Next XX Pages. The same as "next till page XX" command above but according to number of page instead of page number.
 	- "rs": Means restructure.
@@ -64,11 +64,12 @@ Standard file system operations apply:
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
-- Read the PDF to understand the structure and contents and convert them to texts.
+- Read the PDF to understand the structure and contents and convert them to texts or tables.
 - Do not use any bash tools for text extraction.
 - Create structured markdown files with:
   - Appropriate headers and subheaders
-  - Point-form notes
+  - Breakdown long paragraphs into point-form notes
   - Clear section organization
+  - If the information is important, format the text using bold, underline or callouts.
   - Do not add any other information
 - Clean up temporary raw text files after conversion.
