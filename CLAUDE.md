@@ -64,8 +64,8 @@ Standard file system operations apply:
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
-- For PDF that has texts, use `pdftotext` for text extraction: `pdftotext "pdffiles/XX.PDF" - > "convertednotes/page_XX_raw.txt"`.
-- For PDF that has image, read the images and convert them to texts.
+- Read the PDF to understand the structure and contents and convert them to texts.
+- Do not use any bash tools for text extraction.
 - Create structured markdown files with:
   - Appropriate headers and subheaders
   - Point-form notes

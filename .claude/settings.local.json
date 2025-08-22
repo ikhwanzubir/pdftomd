@@ -4,17 +4,8 @@
       "Bash(mkdir:*)",
       "Bash(mv:*)",
       "Bash(pdftk:*)",
-      "Bash(qpdf:*)",
-      "Bash(python3:*)",
-      "Bash(pip install:*)",
-      "Bash(apt list:*)",
-      "Bash(sudo apt:*)",
-      "Bash(sudo apt install:*)",
       "Bash(rm:*)",
-      "Bash(pdftotext:*)",
-      "Bash(sleep:*)",
-      "Bash(cat:*)",
-      "Bash(true)"
+      "Bash(sleep:*)"
     ],
     "deny": [],
     "ask": [],
