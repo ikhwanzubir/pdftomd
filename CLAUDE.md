@@ -51,7 +51,7 @@ Standard file system operations apply:
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number. 
 		- Convert the first pdf file to markdown file. Refer Technical Implementation below. Do not add any other information.
 		- Move the converted pdf file into the `convertedpdf/` directory.
-	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, finish the context. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
+	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, rewrite back the context from the previous page and complete it on the current page. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
 	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the XX page number.
 	- "nXXp": Means Next XX Pages. The same as "next till page XX" command above but according to number of page instead of page number.
 	- "rs": Means restructure.
