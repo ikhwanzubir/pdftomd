@@ -62,7 +62,7 @@ Standard file system operations apply:
 		- Restructure the main headers inside their own markdown files instead of pages.
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
 		- Each restructured markdown filenames is serially numbered except `index.md`.
-		- After completed restructuration, run bash alias command `p2mcleanup` on the current directory.
+		- After completed restructuration, run bash script `~/Scripts/p2mcleanup.sh` on the current directory.
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
