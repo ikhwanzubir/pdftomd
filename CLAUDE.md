@@ -59,6 +59,7 @@ Standard file system operations apply:
 		- Analyze all markdown contents inside `convertednotes/` directory to outline the headers.
 		- Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
 		- Do not add any other information outside from the PDF source.
+		- Do not omit any information from the original markdown file. Make sure all the words are included (except the duplicated sentences from previous context)
 		- Restructure the main headers inside their own markdown files instead of pages.
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
 		- Each restructured markdown filenames is serially numbered except `index.md`.
@@ -67,10 +68,11 @@ Standard file system operations apply:
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
 - Read the PDF to understand the structure and contents and convert them to texts or tables.
+- Do not omit any information. Every word must be included.
 - Do not use any bash tools for text extraction.
 - Create structured markdown files with:
   - Appropriate headers and subheaders
-  - Breakdown long paragraphs into point-form notes
+  - Breakdown long paragraphs into point-form notes. Do not modify the sentences to make it short. Do not omit any information.
   - Clear section organization
   - If the information is important, format the text using bold, underline or callouts.
   - Do not add any other information
