@@ -64,7 +64,8 @@ Standard file system operations apply:
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
 		- Each restructured markdown filenames is serially numbered except `index.md`.
 		- From the context of the whole notes, determine the best main title and create a new markdown file with named `title` and here is the content:
-			- It contains the main title inside a code block with underscore as space. E.g. ```Best_Fever_Therapy```
+			- It contains the main title inside a code block with underscore as space. E.g. ```Best_Fever_Therapy```.
+			- As it will be used for a folder name, it must not exceed 30 characters.
 		- After completed restructuration, run bash script `~/Scripts/p2mcleanup.sh` on the current directory.
 
 ## Technical Implementation
