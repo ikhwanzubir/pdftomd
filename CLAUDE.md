@@ -50,7 +50,6 @@ Standard file system operations apply:
 	- "bg": Means BeGin
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number. 
 		- Convert the first pdf file to markdown file. Refer Technical Implementation below. Do not add any other information.
-		- From the first pdf file, determine the best main title of the document and rename the current directory according to the title.
 		- Move the converted pdf file into the `convertedpdf/` directory.
 	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, rewrite back the context from the previous page and complete it on the current page. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
 	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the XX page number.
@@ -64,6 +63,7 @@ Standard file system operations apply:
 		- Restructure the main headers inside their own markdown files instead of pages.
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
 		- Each restructured markdown filenames is serially numbered except `index.md`.
+		- From the context of the whole notes, determine the best main title and create an empty markdown file with filename of it.
 		- After completed restructuration, run bash script `~/Scripts/p2mcleanup.sh` on the current directory.
 
 ## Technical Implementation
