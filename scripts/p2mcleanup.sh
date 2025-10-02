@@ -12,7 +12,7 @@ check_exists() {
 # Check if all required files and folders are present
 echo "Checking for required files and folders..."
 
-required_items=(".claude" "convertednotes" "convertedpdf" "pdffiles" "structurednotes" "CLAUDE.md")
+required_items=("convertednotes" "convertedpdf" "pdffiles" "structurednotes" "CLAUDE.md")
 all_present=true
 
 for item in "${required_items[@]}"; do
@@ -45,7 +45,7 @@ fi
 
 # Delete specified folders
 echo "Deleting specified folders..."
-folders_to_delete=(".git" ".claude" "convertednotes" "convertedpdf" "pdffiles" "structurednotes" "scripts")
+folders_to_delete=("convertednotes" "convertedpdf" "pdffiles" "structurednotes")
 
 for folder in "${folders_to_delete[@]}"; do
     if [ -d "$folder" ]; then
@@ -57,8 +57,8 @@ for folder in "${folders_to_delete[@]}"; do
 done
 
 # Delete specified files
-echo "Deleting specified files..."
-files_to_delete=("CLAUDE.md" "LICENSE")
+echo "Deleting CLAUDE.md"
+files_to_delete=("CLAUDE.md")
 
 for file in "${files_to_delete[@]}"; do
     if [ -f "$file" ]; then

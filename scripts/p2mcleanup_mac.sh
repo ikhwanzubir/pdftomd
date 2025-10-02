@@ -34,7 +34,7 @@ main() {
     
     # Check if all required files and folders are present
     echo "Checking for required files and folders..."
-    local required_items=(".claude" "convertednotes" "convertedpdf" "pdffiles" "structurednotes" "CLAUDE.md")
+    local required_items=("convertednotes" "convertedpdf" "pdffiles" "structurednotes")
     local all_present=true
     
     for item in "${required_items[@]}"; do
@@ -73,15 +73,15 @@ main() {
     
     # Delete specified folders
     echo "Deleting specified folders..."
-    local folders_to_delete=(".git" ".claude" "convertednotes" "convertedpdf" "pdffiles" "structurednotes" "scripts")
+    local folders_to_delete=("convertednotes" "convertedpdf" "pdffiles" "structurednotes")
     
     for folder in "${folders_to_delete[@]}"; do
         safe_remove "$folder" "directory"
     done
     
     # Delete specified files  
-    echo "Deleting specified files..."
-    local files_to_delete=("CLAUDE.md" "LICENSE")
+    echo "Deleting CLAUDE.md..."
+    local files_to_delete=("CLAUDE.md")
     
     for file in "${files_to_delete[@]}"; do
         safe_remove "$file" "file"
