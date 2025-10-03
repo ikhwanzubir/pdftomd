@@ -111,7 +111,7 @@ fi
 
 echo ""
 echo "Setup complete! Now starting Claude Code..."
-echo "Running: claude -p --dangerously-skip-permissions with 10-minute timeout"
+echo "Running PDF to Markdown Converter"
 echo ""
 
 # Run claude code with timeout (10 minutes = 600 seconds)
@@ -129,4 +129,20 @@ else
 fi
 
 echo ""
-echo "Process finished. Returning control to user."
+echo "Process finished. Running cleanup script..."
+echo ""
+
+# Run the cleanup script
+if [ -f ~/Scripts/p2mcleanup.sh ]; then
+    bash ~/Scripts/p2mcleanup.sh
+    if [ $? -eq 0 ]; then
+        success_msg "Cleanup completed successfully"
+    else
+        echo "⚠ Cleanup script encountered an error"
+    fi
+else
+    echo "⚠ Cleanup script not found at ~/Scripts/p2mcleanup.sh"
+fi
+
+echo ""
+echo "All operations complete. Happy reading!"

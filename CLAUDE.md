@@ -80,7 +80,6 @@ Standard file system operations apply:
 		- From the context of the whole notes, determine the best main title and create a new markdown file with named `title.md` and here is the content:
 			- It contains the main title inside a code block with underscore as space. E.g. ```Best_Fever_Therapy```.
 			- As it will be used for a folder name, it must not exceed 30 characters but be more specifics as not to have duplicated folder names.
-		- After completed restructuration, run bash script `~/Scripts/p2mcleanup.sh` on the current directory.
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
