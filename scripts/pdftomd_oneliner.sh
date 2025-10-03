@@ -171,13 +171,16 @@ echo "Setup complete! Now starting Claude Code..."
 echo "Running PDF to Markdown Converter"
 echo ""
 
+# Record start time
+start_time=$(date +%s)
+
 # Start the stopwatch in background
 {
-    elapsed=0
     while kill -0 $$ 2>/dev/null; do
+        current_time=$(date +%s)
+        elapsed=$((current_time - start_time))
         printf "\rElapsed time: %s" "$(format_time $elapsed)"
         sleep 1
-        ((elapsed++))
     done
 } &
 stopwatch_pid=$!
@@ -192,8 +195,10 @@ exit_code=$?
 kill $stopwatch_pid 2>/dev/null
 wait $stopwatch_pid 2>/dev/null
 
-# Get final elapsed time
-final_time=$(format_time $elapsed)
+# Calculate final elapsed time
+end_time=$(date +%s)
+total_elapsed=$((end_time - start_time))
+final_time=$(format_time $total_elapsed)
 
 echo ""
 echo ""
