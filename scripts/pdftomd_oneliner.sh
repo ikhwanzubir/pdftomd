@@ -31,6 +31,21 @@ format_time() {
     printf "%02d:%02d:%02d" $((seconds/3600)) $((seconds%3600/60)) $((seconds%60))
 }
 
+# Function to create unique folder name
+create_unique_folder_name() {
+    local base_name="$1"
+    local folder_name="$base_name"
+    local counter=1
+    
+    # Check if folder exists, if so, append counter
+    while [ -d "$folder_name" ]; do
+        folder_name="${base_name}_${counter}"
+        ((counter++))
+    done
+    
+    echo "$folder_name"
+}
+
 # Main loop for PDF selection
 while true; do
     echo "Scanning directory for PDF files..."
@@ -94,10 +109,18 @@ echo ""
 success_msg "Selected: $selected_pdf"
 
 # Create folder name from PDF filename (without .pdf extension)
-folder_name="${selected_pdf%.pdf}"
-folder_name="${selected_pdf%.PDF}"
+base_folder_name="${selected_pdf%.pdf}"
+base_folder_name="${base_folder_name%.PDF}"
 # Replace whitespaces with underscores in folder name
-folder_name="${folder_name// /_}"
+base_folder_name="${base_folder_name// /_}"
+
+# Get unique folder name
+folder_name=$(create_unique_folder_name "$base_folder_name")
+
+# Check if folder name was modified
+if [ "$folder_name" != "$base_folder_name" ]; then
+    echo "Note: Folder '$base_folder_name' already exists. Using '$folder_name' instead."
+fi
 
 mkdir "$folder_name" || error_exit "Failed to create folder: $folder_name"
 success_msg "Created folder: $folder_name"
