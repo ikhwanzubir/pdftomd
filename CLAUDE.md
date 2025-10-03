@@ -70,7 +70,7 @@ Standard file system operations apply:
 	- "oneliner":
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number.
 		- Read each of the pdf splitted. Refer Technical Implementation below. Do not add any other information or left out any word or information.
-		- This command skips the use of `convertedpdf/` and `convertednotes/` directories.
+		- This command skips the use of `convertedpdf/` and `convertednotes/`
 		- Analyze the content of each pdf. Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
 		- Do not add any other information outside from the PDF source.
 		- Do not omit any information from the original markdown file. Make sure all the words are included (except the duplicated sentences from previous context)
