@@ -25,6 +25,12 @@ scan_pdf_files() {
     done
 }
 
+# Function to format seconds into HH:MM:SS
+format_time() {
+    local seconds=$1
+    printf "%02d:%02d:%02d" $((seconds/3600)) $((seconds%3600/60)) $((seconds%60))
+}
+
 # Main loop for PDF selection
 while true; do
     echo "Scanning directory for PDF files..."
@@ -142,12 +148,35 @@ echo "Setup complete! Now starting Claude Code..."
 echo "Running PDF to Markdown Converter"
 echo ""
 
+# Start the stopwatch in background
+{
+    elapsed=0
+    while kill -0 $$ 2>/dev/null; do
+        printf "\rElapsed time: %s" "$(format_time $elapsed)"
+        sleep 1
+        ((elapsed++))
+    done
+} &
+stopwatch_pid=$!
+
 # Run claude code with timeout (30 minutes = 1800 seconds)
 timeout 1800 claude -p --dangerously-skip-permissions "oneliner"
 
 # Check exit status
 exit_code=$?
+
+# Stop the stopwatch
+kill $stopwatch_pid 2>/dev/null
+wait $stopwatch_pid 2>/dev/null
+
+# Get final elapsed time
+final_time=$(format_time $elapsed)
+
 echo ""
+echo ""
+echo "Total processing time: $final_time"
+echo ""
+
 if [ $exit_code -eq 124 ]; then
     echo "⚠ Claude Code process timed out after 30 minutes"
 elif [ $exit_code -eq 0 ]; then
