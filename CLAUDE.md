@@ -52,7 +52,7 @@ Standard file system operations apply:
 		- Convert the first pdf file to markdown file. Refer Technical Implementation below. Do not add any other information.
 		- Move the converted pdf file into the `convertedpdf/` directory.
 	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, rewrite back the context from the previous page and complete it on the current page. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
-	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page with 10 seconds interval in between process. Process until the XX page number.
+	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page until the XX page number.
 	- "nXXp": Means Next XX Pages. The same as "next till page XX" command above but according to number of page instead of page number.
 	- "bgtf": Means BeGin Till Finish". This command is the same as "bg" above but continued with all page processing till finish including running "rs" command below.
 	- "rs": Means restructure.
