@@ -80,6 +80,7 @@ Standard file system operations apply:
 		- From the context of the whole notes, determine the best main title and create a new markdown file with named `title.md` and here is the content:
 			- It contains the main title inside a code block with underscore as space. E.g. ```Best_Fever_Therapy```.
 			- As it will be used for a folder name, it must not exceed 30 characters but be more specifics as not to have duplicated folder names.
+		- Finally do not delete any folder or files. A cleanup script will be executed.
 
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
@@ -92,4 +93,3 @@ Standard file system operations apply:
   - Clear section organization
   - If the information is important, format the text using bold, underline or callouts.
   - Do not add any other information
-- Clean up temporary raw text files after conversion.
