@@ -65,7 +65,7 @@ Standard file system operations apply:
 		- Each restructured markdown filenames is serially numbered except `index.md`.
 		- From the context of the whole notes, determine the best main title and create a new markdown file with named `title.md` and here is the content:
 			- It contains the main title inside a code block with underscore as space. E.g. ```Best_Fever_Therapy```.
-			- As it will be used for a folder name, it must not exceed 30 characters but be more specifics as not to have duplicated folder names.
+			- As it will be used for a folder name, it must not exceed 30 characters but be more specifics as not to have duplicated folder names but be more specifics as not to have duplicated folder names.
 		- After completed restructuration, run bash script `~/Scripts/p2mcleanup.sh` on the current directory.
 	- "oneliner":
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number.
