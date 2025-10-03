@@ -73,7 +73,7 @@ Standard file system operations apply:
 		- This command skips the use of `convertedpdf/` and `convertednotes/` directories.
 		- Analyze the content of each pdf. Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
 		- Do not add any other information outside from the PDF source.
-		- Do not omit any information from the original markdown file. Make sure all the words are included (except the duplicated sentences from previous context)
+		- Do not omit any information from the original pdf file. Make sure all the words are included.
 		- Restructure the main headers inside their own markdown files instead of pages.
 		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
 		- Each restructured markdown filenames is serially numbered except `index.md`.
