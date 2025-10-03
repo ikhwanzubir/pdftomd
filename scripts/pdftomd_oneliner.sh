@@ -115,13 +115,13 @@ echo "Running PDF to Markdown Converter"
 echo ""
 
 # Run claude code with timeout (10 minutes = 600 seconds)
-timeout 600 claude -p --dangerously-skip-permissions "oneliner"
+timeout 1800 claude -p --dangerously-skip-permissions "oneliner"
 
 # Check exit status
 exit_code=$?
 echo ""
 if [ $exit_code -eq 124 ]; then
-    echo "⚠ Claude Code process timed out after 10 minutes"
+    echo "⚠ Claude Code process timed out after 30 minutes"
 elif [ $exit_code -eq 0 ]; then
     success_msg "Claude Code process completed successfully"
 else
