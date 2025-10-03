@@ -11,50 +11,77 @@ success_msg() {
     echo "✓ $1"
 }
 
-echo "Scanning directory for PDF files..."
-echo ""
+# Function to scan for PDF files (case-insensitive)
+scan_pdf_files() {
+    pdf_files=()
+    for file in *; do
+        if [ -f "$file" ]; then
+            # Convert filename to lowercase for comparison
+            lowercase_file="${file,,}"
+            if [[ "$lowercase_file" == *.pdf ]]; then
+                pdf_files+=("$file")
+            fi
+        fi
+    done
+}
 
-# Find all PDF files in current directory
-pdf_files=()
-for file in *.pdf; do
-    if [ -f "$file" ]; then
-        pdf_files+=("$file")
-    fi
-done
-
-# Check if any PDF files were found
-if [ ${#pdf_files[@]} -eq 0 ]; then
-    error_exit "No PDF files found in current directory"
-fi
-
-# Display PDF files with numbers
-echo "Found ${#pdf_files[@]} PDF file(s):"
-echo ""
-for i in "${!pdf_files[@]}"; do
-    echo "[$((i+1))] ${pdf_files[$i]}"
-done
-echo ""
-
-# Get user selection
+# Main loop for PDF selection
 while true; do
-    read -p "Select a PDF file (enter number): " selection
-    
-    # Validate input is a number
-    if ! [[ "$selection" =~ ^[0-9]+$ ]]; then
-        echo "Invalid input. Please enter a number."
-        continue
+    echo "Scanning directory for PDF files..."
+    echo ""
+
+    # Scan for PDF files
+    scan_pdf_files
+
+    # Check if any PDF files were found
+    if [ ${#pdf_files[@]} -eq 0 ]; then
+        error_exit "No PDF files found in current directory"
     fi
-    
-    # Convert to array index (0-based)
-    index=$((selection - 1))
-    
-    # Check if selection is in valid range
-    if [ "$index" -ge 0 ] && [ "$index" -lt "${#pdf_files[@]}" ]; then
-        selected_pdf="${pdf_files[$index]}"
-        break
-    else
-        echo "Invalid selection. Please enter a number between 1 and ${#pdf_files[@]}."
-    fi
+
+    # Display PDF files with numbers
+    echo "Found ${#pdf_files[@]} PDF file(s):"
+    echo ""
+    for i in "${!pdf_files[@]}"; do
+        echo "[$((i+1))] ${pdf_files[$i]}"
+    done
+    echo ""
+    echo "[R] Reload/Refresh PDF list"
+    echo "[E] Exit"
+    echo ""
+
+    # Get user selection
+    while true; do
+        read -p "Select a PDF file (enter number, R to reload, or E to exit): " selection
+        
+        # Check for special commands
+        if [[ "$selection" =~ ^[Rr]$ ]]; then
+            echo ""
+            echo "Reloading PDF file list..."
+            echo ""
+            break  # Break inner loop to rescan
+        elif [[ "$selection" =~ ^[Ee]$ ]]; then
+            echo ""
+            echo "Exiting script. Goodbye!"
+            exit 0
+        fi
+        
+        # Validate input is a number
+        if ! [[ "$selection" =~ ^[0-9]+$ ]]; then
+            echo "Invalid input. Please enter a number, R, or E."
+            continue
+        fi
+        
+        # Convert to array index (0-based)
+        index=$((selection - 1))
+        
+        # Check if selection is in valid range
+        if [ "$index" -ge 0 ] && [ "$index" -lt "${#pdf_files[@]}" ]; then
+            selected_pdf="${pdf_files[$index]}"
+            break 2  # Break both loops - valid selection made
+        else
+            echo "Invalid selection. Please enter a number between 1 and ${#pdf_files[@]}."
+        fi
+    done
 done
 
 echo ""
@@ -62,6 +89,7 @@ success_msg "Selected: $selected_pdf"
 
 # Create folder name from PDF filename (without .pdf extension)
 folder_name="${selected_pdf%.pdf}"
+folder_name="${selected_pdf%.PDF}"
 # Replace whitespaces with underscores in folder name
 folder_name="${folder_name// /_}"
 
@@ -114,7 +142,7 @@ echo "Setup complete! Now starting Claude Code..."
 echo "Running PDF to Markdown Converter"
 echo ""
 
-# Run claude code with timeout (10 minutes = 600 seconds)
+# Run claude code with timeout (30 minutes = 1800 seconds)
 timeout 1800 claude -p --dangerously-skip-permissions "oneliner"
 
 # Check exit status
