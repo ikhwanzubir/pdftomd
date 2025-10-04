@@ -151,6 +151,12 @@ success_msg "Created pdffiles folder"
 mkdir -p structurednotes || error_exit "Failed to create structurednotes folder"
 success_msg "Created structurednotes folder"
 
+mkdir -p convertednotes || error_exit "Failed to create convertednotes folder"
+success_msg "Created convertednotes folder"
+
+mkdir -p convertedpdf || error_exit "Failed to create convertedpdf folder"
+success_msg "Created convertedpdf folder"
+
 # Move the PDF file into the folder
 cd "$original_dir" || error_exit "Failed to return to original directory"
 mv "$selected_pdf" "$folder_name/" || error_exit "Failed to move PDF file"
