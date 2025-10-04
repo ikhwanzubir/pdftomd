@@ -229,11 +229,16 @@ if [ -f ~/Scripts/p2mcleanup.sh ]; then
     if [ $? -eq 0 ]; then
         success_msg "Cleanup completed successfully"
     else
-        echo "⚠ Cleanup script encountered an error"
+        echo "Cleanup script ended"
     fi
 else
     echo "⚠ Cleanup script not found at ~/Scripts/p2mcleanup.sh"
 fi
 
+echo ""
+echo "Directory contents:"
+echo "=================="
+ls -lah
+echo "=================="
 echo ""
 echo "All operations complete. Happy reading!"
