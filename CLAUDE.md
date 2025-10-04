@@ -54,7 +54,7 @@ Standard file system operations apply:
 	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, rewrite back the context from the previous page and complete it on the current page. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
 	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page until the XX page number.
 	- "nXXp": Means Next XX Pages. The same as "next till page XX" command above but according to number of page instead of page number.
-	- "oneliner": Means BeGin Till Finish". This command is the same as "bg" above but continued with all page processing till finish including running "rs" command below.
+	- "oneliner": Means begin to restructure. This command is the same as "bg" above but continued with all page processing till finish including running "rs" command below.
 	- "rs": Means restructure.
 		- Analyze all markdown contents inside `convertednotes/` directory to outline the headers.
 		- Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
