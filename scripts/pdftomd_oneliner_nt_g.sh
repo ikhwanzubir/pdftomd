@@ -177,4 +177,4 @@ echo "Setup complete! Now starting Gemini CLI..."
 echo "Running PDF to Markdown Converter"
 echo ""
 
-exec gemini "oneliner then after finished, execute script ~/Scripts/p2mcleanup.sh" --yolo
+exec gemini "oneliner then after finished, execute script ~/Scripts/p2mcleanup.sh" --yolo --model gemini-2.5-flash

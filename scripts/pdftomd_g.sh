@@ -118,4 +118,4 @@ echo "Running: Gemini CLI"
 echo ""
 
 # Step 2e: Run gemini with custom flag
-exec gemini --yolo
+exec gemini --yolo --model gemini-2.5-flash
