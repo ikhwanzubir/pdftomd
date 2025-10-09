@@ -11,13 +11,18 @@ success_msg() {
     echo "✓ $1"
 }
 
+# Function to convert string to lowercase (compatible with Bash 3.2)
+to_lowercase() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
 # Function to scan for PDF files (case-insensitive)
 scan_pdf_files() {
     pdf_files=()
     for file in *; do
         if [ -f "$file" ]; then
-            # Convert filename to lowercase for comparison
-            lowercase_file="${file,,}"
+            # Convert filename to lowercase for comparison (Bash 3.2 compatible)
+            lowercase_file=$(to_lowercase "$file")
             if [[ "$lowercase_file" == *.pdf ]]; then
                 pdf_files+=("$file")
             fi
@@ -109,8 +114,12 @@ echo ""
 success_msg "Selected: $selected_pdf"
 
 # Create folder name from PDF filename (without .pdf extension)
-base_folder_name="${selected_pdf%.pdf}"
-base_folder_name="${base_folder_name%.PDF}"
+# Handle both .pdf and .PDF extensions (case-insensitive)
+base_folder_name="$selected_pdf"
+# Remove .pdf extension (case-insensitive approach)
+if [[ $(to_lowercase "$base_folder_name") == *.pdf ]]; then
+    base_folder_name="${base_folder_name%.[pP][dD][fF]}"
+fi
 # Replace whitespaces with underscores in folder name
 base_folder_name="${base_folder_name// /_}"
 
