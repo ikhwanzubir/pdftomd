@@ -72,6 +72,7 @@ Standard file system operations apply:
 ## Technical Implementation
 - Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
 - Use Gemini CLI to read the PDF to understand the structure and contents and convert them to texts or tables.
+	- Use this command: `gemini -p "convert"`
 - Do not omit any information. Every word must be included.
 - Do not use any bash tools for text extraction.
 - Create structured markdown files with:

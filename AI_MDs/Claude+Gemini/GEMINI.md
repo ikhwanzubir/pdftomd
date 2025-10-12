@@ -20,8 +20,6 @@ pdftomd/
 │   └── ...
 └── convertedpdf/
 │   └── (completed PDF files moved here)
-└── structurednotes/
-│   └── (restructured markdown files moved here)
 ```
 
 ## Repository Purpose
@@ -44,32 +42,14 @@ Standard file system operations apply:
 - If the header contain large notes, make a separate markdown file for that header only. Update the `index.md` with links to the newly created markdown files. 
 
 ## Conversion process
-- Convert the pdf file one at a time. 
-- Split the pdf using pdftk. 
-- Command details:
-	- "bg": Means BeGin
+- Convert the pdf file one at a time.
+- Command "convert" details:
 		- Split the pdf located in the main dir into a single pdf for each page. Name each splitted pdf file according to the page number. 
 		- Convert the first pdf file to markdown file. Refer Technical Implementation below. Do not add any other information.
 		- Move the converted pdf file into the `convertedpdf/` directory.
-	- "nx": Means NeXt. Convert the next pdf file. Refer Technical Implementation below. If the previous page has context with continuation, rewrite back the context from the previous page and complete it on the current page. Do not add any other information. After conversion, move the converted pdf into `convertedpdf/` directory.
-	- "ntpXX": Means Next Till Page XX. The same as "next" command above but continue to process the next page until the XX page number.
-	- "nXXp": Means Next XX Pages. The same as "next till page XX" command above but according to number of page instead of page number.
-	- "oneliner": Means begin to restructure. This command is the same as "bg" above but continued with all page processing till finish including running "rs" command below.
-	- "rs": Means restructure.
-		- Analyze all markdown contents inside `convertednotes/` directory to outline the headers.
-		- Create an `index.md` file that contain overview of the notes and links for each headers and their contents.
-		- Do not add any other information outside from the PDF source.
-		- Do not omit any information from the original markdown file. Make sure all the words are included (except the duplicated sentences from previous context)
-		- Restructure the main headers inside their own markdown files instead of pages.
-		- Create all the restructured markdown files inside a new directory named `structurednotes/`.
-		- Each restructured markdown filenames is serially numbered except `index.md`.
-		- From the context of the whole notes, determine the best main title and create a new markdown file with named `title.md` and here is the content:
-			- It contains the main title inside a code block with underscore as space. E.g. ```Best_Fever_Therapy```.
-			- As it will be used for a folder name, it must not exceed 30 characters but be more specifics as not to have duplicated folder names but be more specifics as not to have duplicated folder names.
-		- Finally do not delete any folder or files. A cleanup script will be executed.
+		- Convert all pdf till there is none in the `pdffiles/` directory.
 
 ## Technical Implementation
-- Use `pdftk` to split PDF files: `pdftk "filename.PDF" burst output "pdffiles/%02d.PDF"`
 - Read the PDF to understand the structure and contents and convert them to texts or tables.
 - Do not omit any information. Every word must be included.
 - Do not use any bash tools for text extraction.
