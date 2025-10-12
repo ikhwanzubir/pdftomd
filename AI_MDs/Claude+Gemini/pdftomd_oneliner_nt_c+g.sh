@@ -137,7 +137,7 @@ success_msg "Changed directory to $folder_name"
 
 # Download CLAUDE.md file
 echo "Downloading CLAUDE.md file..."
-if curl -sSL -o CLAUDE.md https://raw.githubusercontent.com/ikhwanzubir/pdftomd/refs/heads/main/CLAUDE.md; then
+if curl -sSL -o CLAUDE.md https://raw.githubusercontent.com/ikhwanzubir/pdftomd/refs/heads/main/AI%20MDs/Claude%2BGemini/CLAUDE.md; then
     success_msg "Successfully downloaded CLAUDE.md"
 else
     error_exit "Failed to download CLAUDE.md. Make sure curl is installed and you have internet connection"
